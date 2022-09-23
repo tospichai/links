@@ -85,7 +85,7 @@
                     <a href="https://www.messenger.com"><img class="w-8" src="{{asset('images/icon/messenger.png')}}" alt=""></a>
                     <a href="https://www.line.com"><img class="w-8" src="{{asset('images/icon/line.png')}}" alt=""></a>
                 </div>
-            </section> --}}
+            </section>
             <section id="youtube">
                 <div class="relative pb-[56.25%] w-full rounded-xl overflow-hidden">
                     <iframe class="absolute top-0 left-0 w-full h-full border-0" width="100%" height="100%" src="https://www.youtube.com/embed/5MIBqnHuICw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -119,7 +119,7 @@
                         <img class="absolute w-full h-full object-cover object-center" src="images/product2.jpeg" alt="">
                     </a>
                 </div>
-            </section>
+            </section> --}}
             <section id="location">
                 <div class="mb-3">
                     <h2 class="text-xl text-slate-500">Location</h2>

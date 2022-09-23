@@ -30,29 +30,29 @@ class SocialController extends Controller
    public function callbackFromFacebook()
    {
       try {
-         $user = Socialite::driver('facebook')->user();
-         $saveUser = User::updateOrCreate([
-            'facebook_id' => $user->getId(),
+         $facebook = Socialite::driver('facebook')->user();
+         $user = User::updateOrCreate([
+            'facebook_id' => $facebook->getId(),
          ], [
-            'email' => $user->getEmail(),
-            'border_c_1' => '#000000',
-            'border_c_2' => '#000000',
-            'border_c_3' => '#000000',
-            'image_cover' => 'images/banner/default.webp',
-            'password' => Hash::make($user->getName() . '@' . $user->getId())
+            'email' => $facebook->getEmail(),
+            'password' => Hash::make($facebook->getName() . '@' . $facebook->getId())
          ]);
 
-         if ($saveUser->wasRecentlyCreated) {
-            $path = 'https://eu.ui-avatars.com/api/?size=500&name=' . preg_replace('/\s+/', '+', $user->getName()) . '&background=CCCCCC';
+         if ($user->wasRecentlyCreated) {
+            $path = 'https://eu.ui-avatars.com/api/?size=500&name=' . preg_replace('/\s+/', '+', $facebook->getName()) . '&background=CCCCCC';
             $filename = 'images/profile/' . 'logo_profile_' . hexdec(uniqid()) . '.webp';
             Image::make($path)->encode('webp', 90)->save($filename);
-            $saveUser->image = $filename;
-            $saveUser->save();
+            $user->image = $filename;
+            $user->border_c_1 = '#000000';
+            $user->border_c_2 = '#000000';
+            $user->border_c_3 = '#000000';
+            $user->image_cover = 'images/banner/default.webp';
+            $user->save();
          }
 
-         Auth::loginUsingId($saveUser->id);
+         Auth::loginUsingId($user->id);
 
-         return redirect()->route('manage.profile');
+         return redirect()->route('manage.index');
       } catch (\Throwable $th) {
          throw $th;
       }
