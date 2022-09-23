@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index');})->name('home');
 Route::get('login', [SocialController::class, 'login'])->name('login');
+Route::post('logout', [SocialController::class, 'logout'])->name('logout');
 
 Route::prefix('facebook')->name('facebook.')->group(function () {
     Route::get('auth', [SocialController::class, 'loginUsingFacebook'])->name('login');
@@ -25,6 +26,8 @@ Route::prefix('facebook')->name('facebook.')->group(function () {
 });
 
 Route::prefix('manage')->name('manage.')->group(function () {
+    Route::get('/', [ManageController::class, 'index'])->name('index');
+    Route::get('/add', [ManageController::class, 'add'])->name('add');
     Route::get('/profile', [ManageController::class, 'profile'])->name('profile');
     Route::post('/profile', [ManageController::class, 'updateprofile']);
 });

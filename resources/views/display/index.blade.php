@@ -37,8 +37,11 @@
                 <h3 class="text-lg text-slate-600 whitespace-pre text-center mt-2">{{$data->bio}}</h3>
             </div>
         </section>
+        @foreach ($data->categorycomponent as $row)
+            @include($row->component->view, ['data' => $row , 'category' => $row->title])
+        @endforeach
         <section class="p-4 flex flex-col gap-9" id="link">
-            <section id="one-column">
+            {{-- <section id="one-column">
                 <div class="mb-3">
                     <h2 class="text-xl text-slate-500">One Column</h2>
                 </div>
@@ -82,7 +85,7 @@
                     <a href="https://www.messenger.com"><img class="w-8" src="{{asset('images/icon/messenger.png')}}" alt=""></a>
                     <a href="https://www.line.com"><img class="w-8" src="{{asset('images/icon/line.png')}}" alt=""></a>
                 </div>
-            </section>
+            </section> --}}
             <section id="youtube">
                 <div class="relative pb-[56.25%] w-full rounded-xl overflow-hidden">
                     <iframe class="absolute top-0 left-0 w-full h-full border-0" width="100%" height="100%" src="https://www.youtube.com/embed/5MIBqnHuICw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

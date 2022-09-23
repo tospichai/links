@@ -37,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function categorycomponent()
+    {
+        return $this->hasMany(CategoryComponentModel::class, 'id_user');
+    }
 }
