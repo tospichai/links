@@ -13,19 +13,19 @@
                     <div class="flex justify-end">
                         <div class="text-sm text-slate-500">
                             <div>
-                                10:00
+                                {{$row->starttime}}
                             </div>
                             <div>
-                                18:00
+                                {{$row->endtime}}
                             </div>
                         </div>
                         <div class="text-[27px] pl-2">
-                            <a href="">
+                            <a href="tel:{{$row->mobile}}">
                                 <i class="fa-solid fa-phone"></i>
                             </a>
                         </div>
                         <div class="text-[27px] pl-2">
-                            <a href="">
+                            <a href="{{$row->location}}">
                                 <i class="fa-solid fa-location-dot"></i>
                             </a>
                         </div>
