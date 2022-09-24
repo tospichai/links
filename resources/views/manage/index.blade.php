@@ -20,7 +20,7 @@
                             alt="" id="profile-preview">
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-bold">{{ Auth()->user()->link_name }}</div>
+                        <div class="font-bold">{{ Auth()->user()->username }}</div>
                         <div class="text-slate-500 text-sm">{{ Auth()->user()->bio }}</div>
                     </div>
                 </div>

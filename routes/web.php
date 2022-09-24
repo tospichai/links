@@ -18,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index');})->name('home');
 Route::get('login', [SocialController::class, 'login'])->name('login');
+Route::post('login', [SocialController::class, 'loginAuth']);
+Route::get('checkusername', [SocialController::class, 'checkusername'])->name('checkusername');
+Route::get('register', [SocialController::class, 'register'])->name('register');
+Route::post('register', [SocialController::class, 'registerAuth']);
 Route::post('logout', [SocialController::class, 'logout'])->name('logout');
 
 Route::prefix('facebook')->name('facebook.')->group(function () {

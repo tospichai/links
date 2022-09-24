@@ -70,11 +70,11 @@
                     <input class="py-3 px-5 w-full bg-slate-100 rounded-lg" type="text" id="page_name"
                         name="page_name" placeholder="Page name" value="{{ $data->page_name }}">
                 </div>
-                <div class="w-full mb-3">
+                {{-- <div class="w-full mb-3">
                     <label for="username" class="text-slate-500">Username</label>
                     <input class="py-3 px-5 w-full bg-slate-100 rounded-lg" type="text" id="username"
-                        name="link_name" placeholder="Page name" value="{{ $data->link_name }}">
-                </div>
+                        name="username" placeholder="Page name" value="{{ $data->username }}">
+                </div> --}}
                 <div class="w-full mb-3">
                     <label for="email" class="text-slate-500">Email</label>
                     <input class="py-3 px-5 w-full bg-slate-300 rounded-lg cursor-default" type="text" id="email"

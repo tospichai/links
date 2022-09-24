@@ -9,7 +9,7 @@ class DisplayController extends Controller
 {
     public function index(Request $request,$username)
     {
-        $data = User::where('link_name',$username)->first();
+        $data = User::where('username',$username)->first();
 
         return View('display.index',compact('data'));
     }

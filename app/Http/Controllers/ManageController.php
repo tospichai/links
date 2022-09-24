@@ -31,14 +31,14 @@ class ManageController extends Controller
     {
         $data = User::find(Auth::User()->id);
         $data->page_name = $request->page_name;
-        $data->link_name = $request->link_name;
+        $data->username = $request->username;
         $data->bio = $request->bio;
         $data->border_c_1 = $request->border_c_1;
         $data->border_c_2 = $request->border_c_2;
         $data->border_c_3 = $request->border_c_3;
         $image = $request->file('image');
         if ($image) {
-            $name_gen = "logo_profile_" . $data->link_name;
+            $name_gen = "logo_profile_" . $data->username;
             // $img_ext = strtolower($image->getClientOriginalExtension());
             $img_name = $name_gen . '.' . 'webp';
             $upload_location = 'images/profile/';
@@ -53,7 +53,7 @@ class ManageController extends Controller
         }
         $image_cover = $request->file('image_cover');
         if ($image_cover) {
-            $name_gen = "cover_image_" . $data->link_name;
+            $name_gen = "cover_image_" . $data->username;
             // $img_ext = strtolower($image_cover->getClientOriginalExtension());
             $img_name = $name_gen . '.' . 'webp';
             $upload_location = 'images/banner/';

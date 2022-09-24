@@ -51,7 +51,7 @@
         @endforeach
         <footer>
             <div class="flex justify-center mt-20">
-                <div>made with link</div>
+                <div class="text-slate-500">made with link</div>
             </div>
             <div class="flex justify-center pb-20 pt-3">
                 <div class="text-2xl font-bold">Links{}</div>
@@ -81,6 +81,7 @@
         function showImage(event) {
             event = event || window.event;
             var src = event.getElementsByClassName("image")[0].src;
+            document.getElementById("image").src = src;
             document.getElementById("imageblur").src = src;
             document.getElementById("showimage").classList.remove("opacity-0");
             document.getElementById("showimage").classList.remove("invisible");

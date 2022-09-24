@@ -34,7 +34,7 @@
                             <li class=""><a
                                 class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                 target="_blank"
-                                href="{{route('home')}}/{{ Auth()->user()->link_name }}">View <i class="fa-solid fa-globe"></i></a></li>
+                                href="{{route('home')}}/{{ Auth()->user()->username }}">View <i class="fa-solid fa-globe"></i></a></li>
                             <li class=""><a
                                     class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap flex justify-between items-center"
                                     href="{{ route('manage.profile') }}">Profile <i class="fa-solid fa-user"></i></a>
