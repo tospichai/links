@@ -46,7 +46,7 @@
                 <h3 class="text-lg text-slate-600 whitespace-pre text-center mt-2">{{ $data->bio }}</h3>
             </div>
         </section>
-        @foreach ($data->categorycomponent as $row)
+        @foreach ($data->categorycomponent()->orderBy('ordinal')->get() as $row)
             @include($row->component->view, ['data' => $row, 'category' => $row->title])
         @endforeach
         <footer>

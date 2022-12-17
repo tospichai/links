@@ -1,7 +1,9 @@
 @extends('manage.layout')
 
+@section('title', 'Profile')
+
 @section('navbar')
-    <a href="{{ route('manage.index') }}">
+    <a class="px-4" href="{{ route('manage.index') }}">
         <div class="p-3"><i class="fa-solid fa-arrow-left"></i></div>
     </a>
 @endsection
@@ -85,7 +87,7 @@
                     <div class="relative">
                         <textarea class="py-3 px-5 w-full bg-slate-100 rounded-lg" name="bio" id="bio" rows="3"
                             maxlength="100">{{ $data->bio }}</textarea>
-                        <div class="absolute top-0 right-0 p-2 text-slate-500"> <span id="charcount">0</span>/100
+                        <div class="absolute top-0 right-0 p-2 text-slate-500 text-xs"> <span id="charcount">0</span>/100
                         </div>
                     </div>
                 </div>

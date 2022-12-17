@@ -1,5 +1,7 @@
 @extends('manage.layout')
 
+@section('title', 'Add Block')
+
 @section('navbar')
     <a href="{{ route('manage.index') }}">
         <div class="p-3"><i class="fa-solid fa-arrow-left"></i></div>

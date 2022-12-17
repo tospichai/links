@@ -12,7 +12,8 @@ class ManageController extends Controller
 {
     public function index()
     {
-        return View('manage.index');
+        $data = Auth::User();
+        return View('manage.index', compact('data'));
     }
 
     public function profile()

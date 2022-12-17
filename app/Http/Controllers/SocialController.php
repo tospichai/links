@@ -48,7 +48,7 @@ class SocialController extends Controller
          ]);
    }
 
-   public function checkusername(Request $request)
+   public function check(Request $request)
    {
       $username = $request->query('username');
       if ($username) {

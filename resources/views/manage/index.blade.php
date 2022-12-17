@@ -1,6 +1,15 @@
 @extends('manage.layout')
 
+@section('title', 'Design')
+
 @section('navbar')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+    $( function() {
+      $( "#design" ).sortable();
+    } );
+    </script>
     <a href="">
     </a>
 @endsection
@@ -15,13 +24,13 @@
                 <div class="flex items-center gap-4">
                     <div class="p-0.5 relative h-[60px] w-[60px] text-slate-500 rounded-full overflow-hidden shrink-0"
                         id="border"
-                        style="background-image: linear-gradient(to right, {{ Auth()->user()->border_c_1 }},{{ Auth()->user()->border_c_2 }},{{ Auth()->user()->border_c_3 }});">
-                        <img class="w-full z-0 group-hover:opacity-75 h-full rounded-full" src="{{ asset(Auth()->user()->image) }}"
+                        style="background-image: linear-gradient(to right, {{ $data->border_c_1 }},{{ $data->border_c_2 }},{{ $data->border_c_3 }});">
+                        <img class="w-full z-0 group-hover:opacity-75 h-full rounded-full" src="{{ asset($data->image) }}"
                             alt="" id="profile-preview">
                     </div>
                     <div class="flex flex-col">
-                        <div class="font-bold">{{ Auth()->user()->username }}</div>
-                        <div class="text-slate-500 text-sm">{{ Auth()->user()->bio }}</div>
+                        <div class="font-bold">{{ $data->username }}</div>
+                        <div class="text-slate-500 text-sm">{{ $data->bio }}</div>
                     </div>
                 </div>
                 <div class="flex flex-col justify-center">
@@ -30,8 +39,33 @@
                 </div>
             </div>
             <hr class="mb-6">
-            <a class="group" href="{{route('manage.add')}}">
-                <div class="flex gap-4 border-dotted border-slate-800 border-2 rounded-lg items-center p-4 group-hover:bg-slate-100">
+            <div id="design" class="flex flex-col divide-y">
+                @foreach ($data->categorycomponent()->orderBy('ordinal')->get() as $key => $row)
+                    <div class="flex justify-between p-4 items-center border-[1px] cursor-move @if($key == 0 ) border-b-0 @endif">
+                        <div class="flex flex-col gpa-8">
+                            <div class="px-2 font-bold">
+                                {{ $row->title }}
+                            </div>
+                            <div class="px-2 text-xs text-slate-500">
+                                {{ $row->component->category->name }} > 
+                                {{ $row->component->name }}
+                            </div>
+                        </div>
+                        <div class="flex justify-center gpa-8 items-center cursor-pointer">
+                            <div class="px-2">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </div>
+                            <div class="px-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <hr class="mb-6">
+            <a class="group" href="{{ route('manage.add') }}">
+                <div
+                    class="flex gap-4 border-dotted border-slate-800 border-2 rounded-lg items-center p-4 group-hover:bg-slate-100">
                     <div class="flex">
                         <i class="fa-solid fa-plus"></i>
                     </div>
@@ -41,9 +75,6 @@
                     </div>
                 </div>
             </a>
-            <div class="w-full my-5">
-                <button type="submit" class="py-3 w-full bg-slate-800 rounded-lg text-white">Save</button>
-            </div>
         </div>
     </div>
 @endsection
