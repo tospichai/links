@@ -34,6 +34,7 @@ Route::prefix('manage')->name('manage.')->group(function () {
     Route::get('/add', [ManageController::class, 'add'])->name('add');
     Route::get('/profile', [ManageController::class, 'profile'])->name('profile');
     Route::post('/profile', [ManageController::class, 'updateprofile']);
+    Route::post('/dragsort', [ManageController::class, 'dragsort']);
 });
 
 Route::get('/{username}', [DisplayController::class, 'index'])->name('index');

@@ -20,12 +20,12 @@
                             </div>
                         </div>
                         <div class="text-[27px] pl-2">
-                            <a href="tel:{{$row->mobile}}">
+                            <a href="tel:{{$row->mobile}}" target="_blank">
                                 <i class="fa-solid fa-phone"></i>
                             </a>
                         </div>
                         <div class="text-[27px] pl-2">
-                            <a href="{{$row->location}}">
+                            <a href="{{$row->location}}" target="_blank">
                                 <i class="fa-solid fa-location-dot"></i>
                             </a>
                         </div>

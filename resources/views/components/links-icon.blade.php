@@ -5,7 +5,7 @@
         </div>
         <div class="flex justify-around my-5">
             @foreach ($data->usercomponent()->orderBy('ordinal')->get() as $row)
-                <a href="{{ $row->url }}"><img class="w-8" src="{{ asset($row->icon) }}" alt=""></a>
+                <a href="{{ $row->url }}" target="_blank"><img class="w-8" src="{{ asset($row->icon) }}" alt=""></a>
             @endforeach
         </div>
     </section>

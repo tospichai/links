@@ -3,15 +3,41 @@
 @section('title', 'Design')
 
 @section('navbar')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<script>
-    $( function() {
-      $( "#design" ).sortable();
-    } );
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        const fullUrl = window.location.origin + '/manage';
+
+        function dragsort(data, row) {
+            $.ajax({
+                url: fullUrl + '/dragsort',
+                type: 'post',
+                data: {
+                    id: data,
+                    row: row,
+                    _token: $('input[name="_token"]').val()
+                },
+                dataType: 'json',
+                success: function(data) {}
+            })
+        }
+        $(function() {
+            $("#design").sortable({
+                update: function(event, ui) {
+                    const id = new Array();
+                    const row = new Array();
+
+                    const data = $(".ordinal").map(function() {
+                        id.push($(this).attr("data-id"));
+                        row.push($(this).attr("data-row"));
+                    });
+                    dragsort(id, row);
+                }
+            });
+        });
     </script>
-    <a href="">
-    </a>
 @endsection
 
 @section('content')
@@ -39,15 +65,16 @@
                 </div>
             </div>
             <hr class="mb-6">
-            <div id="design" class="flex flex-col divide-y">
+            <div id="design" class="flex flex-col">
                 @foreach ($data->categorycomponent()->orderBy('ordinal')->get() as $key => $row)
-                    <div class="flex justify-between p-4 items-center border-[1px] cursor-move @if($key == 0 ) border-b-0 @endif">
+                    <div class="flex justify-between p-4 items-center border-[1px] cursor-move ordinal"
+                        data-row="{{ $key + 1 }}" data-id="{{ $row->id }}">
                         <div class="flex flex-col gpa-8">
                             <div class="px-2 font-bold">
                                 {{ $row->title }}
                             </div>
                             <div class="px-2 text-xs text-slate-500">
-                                {{ $row->component->category->name }} > 
+                                {{ $row->component->category->name }} >
                                 {{ $row->component->name }}
                             </div>
                         </div>

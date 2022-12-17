@@ -5,7 +5,7 @@
             </div>
             <div class="grid grid-cols-1 gap-3">
                 @foreach ($data->usercomponent()->orderBy('ordinal')->get() as $row)
-                    <a href="{{ $row->url }}">
+                    <a href="{{ $row->url }}" target="_blank">
                         <div class="flex justify-between items-center p-3 border-2 border-slate-200 rounded-xl">
                             <img class="w-[32px]" src="{{ asset($row->icon) }}">
                             <div class="grow text-center font-bold">{{ $row->name }}</div>

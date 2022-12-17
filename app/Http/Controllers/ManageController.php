@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryComponentModel;
 use App\Models\CategoryModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class ManageController extends Controller
     {
         $data = User::find(Auth::User()->id);
         $data->page_name = $request->page_name;
-        $data->username = $request->username;
+        // $data->username = $request->username;
         $data->bio = $request->bio;
         $data->border_c_1 = $request->border_c_1;
         $data->border_c_2 = $request->border_c_2;
@@ -73,5 +74,16 @@ class ManageController extends Controller
         }
         $data->save();
         return redirect()->back();
+    }
+
+    public function dragsort(Request $request)
+    {
+        $position = $request->id;
+        $row = $request->row;
+        $i = min($row);
+        foreach ($position as $v) {
+            CategoryComponentModel::where(['id' => $v])->update(['ordinal' => $i]);
+            $i++;
+        }
     }
 }

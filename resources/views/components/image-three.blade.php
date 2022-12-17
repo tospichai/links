@@ -6,7 +6,7 @@
         <div class="grid grid-cols-3 gap-3">
             @foreach ($data->usercomponent()->orderBy('ordinal')->get() as $row)
                 <a class="relative rounded-xl overflow-hidden aspect-square"
-                    href="@if ($row->url) {{ $row->url }} @else javascript:; @endif" @if (!$row->url) onclick="showImage(this)" @endif>
+                    href="@if ($row->url) {{ $row->url }}" target="_blank" @else javascript:; @endif" @if (!$row->url) onclick="showImage(this)" @endif>
                     <img class="absolute w-full h-full object-cover object-center image" src="{{ asset($row->icon) }}"
                         >
                     <div
